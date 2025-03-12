@@ -1,0 +1,18 @@
+const googleTranslateConfig = {
+    lang: "uk",
+};
+
+function TranslateInit() {
+    let code = TranslateGetCode();
+    console.log('Lang:', code);
+    if (code != "uk") {
+        new google.translate.TranslateElement({
+            pageLanguage: "uk",
+        });
+    }
+}
+
+function TranslateGetCode() {
+    let lang = $.cookie("googtrans") != undefined && $.cookie("googtrans") != "null" ? $.cookie("googtrans") : googleTranslateConfig.lang;
+    return lang.substr(-2);
+}
